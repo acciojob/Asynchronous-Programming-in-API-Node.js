@@ -1,22 +1,13 @@
 const fs = require('fs');
 const http = require('http');
-const https = require('https');
 
-const urls = process.argv.slice(2);
+function fetchFromAPI(url) {
+  // TODO: Return a promise that resolves to the response from the API
+}
 
-urls.forEach((url) => {
-  const protocol = url.startsWith('https') ? https : http;
-  const options = { method: 'GET', headers: { 'User-Agent': 'Mozilla/5.0' } };
+function saveToFile(filePath, data) {
+  // TODO: Use fs.writeFile to save the data to the specified file
+}
+module.exports = function fetchFromAPI(url, filePath){ };
 
-  protocol.get(url, options, (res) => {
-    let data = '';
-    res.on('data', (chunk) => {
-      data += chunk;
-    });
-    res.on('end', () => {
-      // TODO: Write the data to a file with the hostname as the filename
-    });
-  }).on('error', (err) => {
-    console.error(`Error downloading ${url}: ${err}`);
-  });
-});
+// TODO: Call fetchFromAPI and saveToFile with the command-line arguments
